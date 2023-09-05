@@ -1,33 +1,52 @@
-let Hipodoge = document.getElementById('Hipodoge')
-let Capipepo = document.getElementById('Capipepo')
-let Ratigueya = document.getElementById('Ratigueya')
+
+let Pitbull = document.getElementById('Pitbull')
+let Chiuaua = document.getElementById('Chiuaua')
+let Rotweiller = document.getElementById('Rotweiller')
 let btnMascotaJugador = document.getElementById('botonMascota')
-let spanJugador = document.getElementById('spanJugador')
-let spanEnemigo = document.getElementById('spanEnemigo')
-let botonFuego = document.getElementById('botonFuego')
-let botonAgua = document.getElementById('botonAgua')
-let botonTierra = document.getElementById('botonTierra')
-let mensaje
+let spanJugador = document.getElementById('mascota-jugador')
+let spanEnemigo = document.getElementById('mascota-enemigo')
+let botonOreja = document.getElementById('botonOreja')
+let botonCola = document.getElementById('botonCola')
+let botonPata = document.getElementById('botonPata')
+let resultado = document.getElementById('resultado')
+let mordidaJugador = document.getElementById('mordida-jugador')
+let mordidaEnemigo = document.getElementById('mordida-enemigo')
+let spanVidaJugador = document.getElementById('vida-jugador')
+let spanVidaEnemigo = document.getElementById('vida-enemigo')
+let reiniciar = document.getElementById('botonReiniciar')
+let sectionSeleccionarAtaque = document.getElementById('selecAtaque')
+let sectionSeleccionarMascota = document.getElementById('selecMascota')
+let sectionReiniciar = document.getElementById('reiniciar')
+let vidasJugador = 3
+let vidasEnemigo = 3
 let ataqueJugador
 let ataqueEnemigo
 let empates = 0
 let victorias = 0
 let derrotas = 0
+
 function iniciarJuego(){
+
+    sectionSeleccionarAtaque.style.display = 'none'
+    sectionReiniciar.style.display = 'none'
     btnMascotaJugador.addEventListener('click', MascotaJugador)
-    botonFuego.addEventListener('click',ataqueFuego)
-    botonAgua.addEventListener('click',ataqueAgua)
-    botonTierra.addEventListener('click',ataqueTierra)
+    botonOreja.addEventListener('click',ataqueOreja)
+    botonCola.addEventListener('click',ataqueCola)
+    botonPata.addEventListener('click',ataquePata)
+    reiniciar.addEventListener('click',reiniciarJuego)
+ 
 }
 
-
 function MascotaJugador(){
-    if(Hipodoge.checked){
-       spanJugador.innerHTML= 'Hipodoge '
-    }else if(Capipepo.checked){
-        spanJugador.innerHTML= 'Capipepo '
-    }else if(Ratigueya.checked){
-        spanJugador.innerHTML= 'Ratigueya '
+    sectionSeleccionarAtaque.style.display = 'flex'
+    sectionSeleccionarMascota.style.display ='none'
+    
+    if(Pitbull.checked){
+       spanJugador.innerHTML= 'Pitbull '
+    }else if(Chiuaua.checked){
+        spanJugador.innerHTML= 'Chiuaua '
+    }else if(Rotweiller.checked){
+        spanJugador.innerHTML= 'Rotweiller '
     }else {
         alert('Selecciona una mascota')
     }
@@ -37,64 +56,99 @@ function MascotaJugador(){
 function MascotaEnemigo(){
     let mascotaAleatoriaEnemigo =  aleatorio(1,3)
     if(mascotaAleatoriaEnemigo == 1){
-       spanEnemigo.innerHTML= 'Hipodoge '
+       spanEnemigo.innerHTML= 'Pitbull '
     }else if(mascotaAleatoriaEnemigo == 2){
-        spanEnemigo.innerHTML= 'Capipepo '
+        spanEnemigo.innerHTML= 'Chiuaua '
     }else if(mascotaAleatoriaEnemigo == 3){
-        spanEnemigo.innerHTML= 'Ratigueya '
+        spanEnemigo.innerHTML= 'Rotweiller'
     }
 }
-function ataqueFuego(){
-    ataqueJugador = 'FUEGO'
+
+function ataqueOreja(){
+    ataqueJugador = 'Oreja'
     ataqueAleatorioEnemigo()
 }
-function ataqueAgua(){
-    ataqueJugador = 'AGUA'
+
+function ataqueCola(){
+    ataqueJugador = 'Cola'
     ataqueAleatorioEnemigo()
 }
-function ataqueTierra(){
-    ataqueJugador = 'TIERRA'
+
+function ataquePata(){
+    ataqueJugador = 'Pata'
     ataqueAleatorioEnemigo()
 }
+
 function ataqueAleatorioEnemigo(){
     let ataqueAleatorio =  aleatorio(1,3)
     if(ataqueAleatorio == 1){
-      ataqueEnemigo = 'FUEGO'
+      ataqueEnemigo = 'Oreja'
     }else if(ataqueAleatorio == 2){
-        ataqueEnemigo = 'AGUA'
+        ataqueEnemigo = 'Cola'
     }else if(ataqueAleatorio == 3){
-        ataqueEnemigo = 'TIERRA'
+        ataqueEnemigo = 'Pata'
     }
     batalla()
-    crearMensaje()
 }
-
 
 function batalla(){
     if ( ataqueJugador == ataqueEnemigo ) {
-        mensaje = '¡EMPATE! 🤼'
+        crearMensaje('¡EMPATARON! 🤼')
         empates = empates + 1;
-    } else if ( ataqueJugador == 'FUEGO' && ataqueEnemigo == 'TIERRA' ) {
-       mensaje = '¡GANASTE! 🥳 '
+    } else if ( ataqueJugador == 'Oreja' && ataqueEnemigo == 'Pata' ) {
+       crearMensaje('GANO TU MORDIDA! 🥳 ')
         victorias = victorias + 1;
-    } else if ( ataqueJugador == 'AGUA' && ataqueEnemigo == 'FUEGO' ) {
-        mensaje = '¡GANASTE! 🥳 '
+        vidasEnemigo--
+        spanVidaEnemigo.innerHTML = vidasEnemigo
+
+    } else if ( ataqueJugador == 'Cola' && ataqueEnemigo == 'Oreja' ) {
+        crearMensaje('GANO TU MORDIDA! 🥳 ')
         victorias = victorias + 1;
-    } else if ( ataqueJugador == 'TIERRA' && ataqueEnemigo == 'AGUA' ) {
-        mensaje = '¡GANASTE! 🥳 '
+        vidasEnemigo--
+        spanVidaEnemigo.innerHTML = vidasEnemigo
+    } else if ( ataqueJugador == 'Pata' && ataqueEnemigo == 'Cola' ) {
+        crearMensaje('GANO TU MORDIDA! 🥳 ')
         victorias = victorias + 1;
+        vidasEnemigo--
+        spanVidaEnemigo.innerHTML = vidasEnemigo
     } else {
-        mensaje = ' PERDISTE... 😢 '
+        crearMensaje(' TE MORDIERON MAS FUERTE... 😢 ')
         derrotas = derrotas + 1;
+        vidasJugador--
+        spanVidaJugador.innerHTML = vidasJugador
+}
+revisarVidas()
+}
+
+function revisarVidas(){
+    if (vidasEnemigo == 0) {
+        mensajeFinal('GANO TU MASCOTA!!!!' ) 
+    } else if (vidasJugador== 0 ) {
+        mensajeFinal('A TU MASCOTA LA MORDISQUEARON....')
     }
- 
+}
+
+function crearMensaje(mensaje){
+
+    resultado.innerHTML = mensaje
+    let nuevaMordidaJugador  = document.createElement('p')
+    let nuevaMordidaEnemigo = document.createElement('p')
+    nuevaMordidaJugador.innerHTML = ataqueJugador
+    nuevaMordidaEnemigo.innerHTML= ataqueEnemigo
+    mordidaEnemigo.appendChild(nuevaMordidaEnemigo)
+    mordidaJugador.appendChild(nuevaMordidaJugador)
+
+}
+
+function mensajeFinal(mensajeResultado){
+    resultado.innerHTML= mensajeResultado
+    botonOreja.disabled = true
+    botonCola.disabled = true
+    botonPata.disabled = true 
+    sectionReiniciar.style.display = 'block'
 }
 
 
-function crearMensaje(){
-    let parrafo = document.createElement('p')
-    parrafo = 'Tu mascota atacó con ' + ataqueJugador, '...la mascota del enemigo atacó con ' + ataqueEnemigo + '...Resultado :  ' + mensaje + ' ...'
-}
 
 function resultadoBatalla(){
     function mostrarResultados() {
@@ -120,6 +174,10 @@ function resetearVariables() {
     victorias = 0;
     derrotas  = 0;
     empates   = 0;
+}
+
+function reiniciarJuego(){
+    location.reload()
 }
 
 function aleatorio(min , max){

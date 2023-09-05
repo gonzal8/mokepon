@@ -3,44 +3,83 @@
     <head>
         <meta charset="utf-8" />
 
-        <title>MOKEPON!</title>
-
+        <title>PELEA DE PERROS</title>
+        <link rel="stylesheet" href="style.css"
       
     </head>
-    <body>
-        <h1>MOKEPON! 🔥💧🌱</h1>
 
+    <body>
+    
         <section id="selecMascota">
-            <h2>Elige tu mascota:</h2>
-            <label for="Hipodoge">Hipodoge</label>
-            <input type="radio" name="mascota"  id="Hipodoge">
-            <label for="Capipepo">Capipepo</label>
-            <input type="radio" name="mascota" id="Capipepo">
-            <label for="Ratigueya">Ratigueya</label>
-            <input type="radio" name="mascota" id="Ratigueya">
-            <button id="botonMascota">Seleccionar</button>
+            
+            <h1 class="titulo">PELEA DE PERROS! 🔥💧🌱</h1>
+
+            <h2 class="subtitulo">Elige tu mascota:</h2>
+
+            <div class="tarjetas">
+                <input type="radio" name="mascota"  id="Pitbull">
+                <label for="Pitbull" class="tarjeta-de-mokepon">
+                    <p>Pitbull</p>
+                    <img src="imagenes/pitbull.png" alt="Pitbull">
+                </label>
+               
+                <input type="radio" name="mascota" id="Chiuaua">
+                <label for="Chiuaua"class="tarjeta-de-mokepon">
+                    <p>Chiuaua</p>
+                    <img src="imagenes/Chiuaua.png" alt="Chiuaua">
+                </label>
+               
+                <input type="radio" name="mascota" id="Rotweiller">
+                <label for="Rotweiller" class="tarjeta-de-mokepon">
+                    <p>Rotweiller</p>
+                    <img src="imagenes/Rottweiller.jpg" alt="Rottweiller">
+                </label>
+        
+            </div>
+
+           <button id="botonMascota" class="boton-seleccionar-mascota">Seleccionar</button>
+
         </section>
+
 
         <section id="selecAtaque">
-            <h2>Elige tu ataque:</h2>
+            
+            <h1 class="titulo">PELEA DE PERROS! 🔥💧🌱</h1>
+        
+            <h2>Elige tu mordida:</h2>
 
-            <p>Tu mascota <span id="spanJugador"></span>tiene <span>3</span> vidas</p>
-            <p>La mascota <span id="spanEnemigo"></span> del enemigo tiene <span>3</span> vidas</p>
+            <div class="botoncitos">
 
-            <p>
-                <button id="botonFuego">Fuego 🔥</button>
-                <button id="botonAgua">Agua 💧</button>
-                <button id="botonTierra">Tierra 🌱</button>
-            </p>
-        </section>
+                <button id="botonOreja" class="boton-ataque">Oreja </button>
+                <button id="botonCola" class="boton-ataque">Cola </button>
+                <button id="botonPata" class="boton-ataque">Pata </button>
 
-        <section id="mensajes">
-        </section>
+            </div>
 
-        <section id="reiniciar">
-            <button id="botonReiniciar">Reiniciar</button>
-        </section>
+        <div id="mensajes">
+
+            <p id="resultado">Mucha Suerte</p>
+          
+            <section id="reiniciar">
+                <button id="botonReiniciar">Reiniciar</button>
+            </section>
+        </div>
+
+        <div class="ataques">
+                <div class="ataque-jugador">
+                    <p id="vida-jugador">3</p>
+                    <p id="mascota-jugador"></p>
+                    <div id="mordida-jugador"></div>
+                </div>
+               <div class="ataque-enemigo">
+                <p id="vida-enemigo">3</p>
+                <p id="mascota-enemigo"></p>
+                <div id="mordida-enemigo"></div>    
+               </div>
+        </div>
+    </section>
     <script src="script.js"></script>
+
     </body>
     
 </html>

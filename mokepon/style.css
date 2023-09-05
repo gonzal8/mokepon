@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Fredoka&family=Handjet:wght@900&display=swap');
+body{
+font-family: 'Fredoka', sans-serif;
+}
+#selecMascota{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.titulo{
+    color: green;
+    font-size: 60px;
+}
+
+.subtitulo{
+    font-size: 30px;
+}
+
+.tarjetas, .botoncitos{
+    display: flex;
+    gap: 10px;
+}
+.tarjeta-de-mokepon{
+    width: 170px;
+    height: 100px;
+    background: darkolivegreen;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 8px;
+    border: 3px solid black;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.tarjeta-de-mokepon img{
+    width: 70px;
+   
+}
+input{
+    display: none;
+}
+input:checked + label{
+    background-color: brown;
+}
+
+.boton-seleccionar-mascota{
+    font-family: 'Handjet', cursive;
+    width: 117px;
+    height: 40px;
+    border-radius: 80px;
+    background: khaki;
+    margin-top: 10px;
+    
+}
+#selecAtaque{
+    flex-direction: column;
+    align-items: center;
+}
+.boton-ataque{
+    background-color: green;
+    width: 150px;
+    height: 49px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    font-size: 20px;
+}
+.ataques{
+    
+    display: grid;
+    grid-template-columns: 100px 100px;
+    justify-items: center;
+    background: darkorange;
+    border-radius: 10px;
+}
+
+#vida-jugador, #vida-enemigo {
+    font-size: 32px;
+    margin-bottom: 0;
+  }
+
+.ataque-jugador, .ataque-enemigo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+#botonReiniciar{
+    width: 150px;
+    height: 60px;
+    border-radius: 100px;
+    background-color: saddlebrown;
+}
+#reiniciar{
+margin-bottom: 15px;
+}
+@media(max-width:580px){
+    .tarjetas,.botoncitos{
+        flex-direction: column;
+    }
+    
+}
